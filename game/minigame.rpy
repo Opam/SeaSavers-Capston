@@ -11,7 +11,7 @@ init python:
     sampah_speed = 4  
     ikan_list = []
     max_ikan = 1
-
+    anjing = 1
 
     buff_active = False  
     buff_duration = 15.0  
