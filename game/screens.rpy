@@ -296,11 +296,11 @@ style quick_button_text:
 screen navigation():
 
     vbox:
-        style_prefix "navigation"
+        #style_prefix "navigation"
 
         #xpos gui.navigation_xpos
         ypos 50
-        xpos 100
+        #xpos 100
         #yalign 0.5
         #spacing 30
         #spacing gui.navigation_spacing
@@ -308,7 +308,8 @@ screen navigation():
         if main_menu:
                 #MULAI
                 button:
-                    xsize 300 ysize 200
+                    ypos 283
+                    xsize 603 ysize 135
                     background "gui/button/mulaibiasa.png"
                     hover_background "gui/button/mulaihover.png"
                     action Start()
