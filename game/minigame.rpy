@@ -264,7 +264,7 @@ screen game_screen:
             vbox:
                 text "{b}BUFF ACTIVE!{/b}" color "#FFD700"
                 text "Time Left: [buff_timer:.1f]s" xpos 0 ypos 10
-# Menampilkan semua sampah di layar
+
     for sampah in sampah_list:
         imagebutton:
             xpos sampah['x']
@@ -314,18 +314,11 @@ screen game_screen_misi_1:
             xalign 0.5 yalign 0.5
             text "[durasi]" size 70 xalign 0.5
             #text "Score: [score_1:.0f] / 6000" style "timer_text"
-            text "Sampah: [sampah_terkumpul]/20"
+            text "Sampah: [sampah_terkumpul]/50"
         timer 1.0 repeat True action If(
             durasi > 0,
-            [SetVariable('durasi', durasi - 1), If(sampah_terkumpul >= 20, [Hide('game_screen_misi_1'), Jump('misi_1_berhasil')])],
-            [If(sampah_terkumpul < 20, [Hide('game_screen_misi_2'), Jump('misi_2_gagal')])]
-        )
-        timer 1.0 repeat True action If(
-            durasi > 0,
-            [SetVariable('durasi', durasi - 1), 
-            If(sampah_terkumpul >= 50, [Hide('game_screen_misi_1'), Jump('misi_1_berhasil')])
-            ],
-            [Hide('game_screen_misi_1'), Jump('misi_1_gagal')]
+            [SetVariable('durasi', durasi - 1), If(sampah_terkumpul >= 50, [Hide('game_screen_misi_1'), Jump('misi_1_berhasil')])],
+            [If(sampah_terkumpul < 50, [Hide('game_screen_misi_1'), Jump('misi_1_gagal')])]
         )
 
 
@@ -381,15 +374,16 @@ screen game_screen_misi_2:
         timer 1.0 repeat True action If(
             durasi > 0,
             [SetVariable('durasi', durasi - 1), If(score_1 >= 6000, [Hide('game_screen_misi_2'), Jump('misi_2_berhasil')])],
-            [If(score < 6000, [Hide('game_screen_misi_2'), Jump('misi_2_gagal')])]
+            [If(score_1 < 6000, [Hide('game_screen_misi_2'), Jump('misi_2_gagal')])]
         )
 
     if buff_active:
         frame:
-            xsize 500 ysize 100
+            xsize 600 ysize 150
             yalign 0.1 xpos 1200
             vbox:
-                text "{b}BUFF ACTIVE!{/b}" color "#FFD700"
+                xalign 0.1 yalign 0.5
+                text "BUFF ACTIVE!" color "#FFD700"
                 text "Time Left: [buff_timer:.1f]s" xpos 0 ypos 10
     
     for sampah in sampah_list:
@@ -450,20 +444,21 @@ screen game_screen_misi_3:
         vbox:
             xalign 0.5 yalign 0.5
             text "[durasi]" size 70 xalign 0.5
-            text "Score: [score_1:.0f] / 6000" style "timer_text"
+            text "Score: [score_1:.0f] / 8000" style "timer_text"
 
         timer 1.0 repeat True action If(
             durasi > 0,
-            [SetVariable('durasi', durasi - 1), If(score_1 >= 5999, [Hide('game_screen_misi_3'), Jump('misi_3_berhasil')])],
-            [If(score_1 < 6000, [Hide('game_screen_misi_3'), Jump('misi_3_gagal')])]
+            [SetVariable('durasi', durasi - 1), If(score_1 >= 8000, [Hide('game_screen_misi_3'), Jump('misi_3_berhasil')])],
+            [If(score_1 < 8000, [Hide('game_screen_misi_3'), Jump('misi_3_gagal')])]
         )
 
     if buff_active:
         frame:
-            xsize 500 ysize 100
+            xsize 600 ysize 150
             yalign 0.1 xpos 1200
             vbox:
-                text "{b}BUFF ACTIVE!{/b}" color "#FFD700"
+                xalign 0.1 yalign 0.5
+                text "BUFF ACTIVE!" color "#FFD700"
                 text "Time Left: [buff_timer:.1f]s" xpos 0 ypos 10
     
 
@@ -472,7 +467,7 @@ screen game_screen_misi_3:
             xpos sampah['x']
             ypos sampah['y']
             idle sampah['image']  
-            activate_sound "audio/clicksampah.mp3"
+            activate_sound "audio/sfx/clicksampah.mp3"
             action Function(catch_sampah, sampah['x'], sampah['y'])  
         
         if sampah['popup_score']:  
@@ -512,28 +507,96 @@ screen game_screen_misi_3:
 
     timer 0.001 repeat True action [Function(update_items)]
 
-screen win_condition:
+screen win_condition_1:
     
     frame:
-        background "images/akhir.png"
-        text "{b}MISI BERHASIL{/b}" color "#FFFFFF" xalign 0.5 yalign 0.1 size 70
+        background "images/win.png"
+        #text "{b}MISI BERHASIL{/b}" color "#FFFFFF" xalign 0.5 yalign 0.1 size 70
+        button:
+            ypos 681 xpos 1006
+            xsize 100 ysize 100
+            background "gui/button/lanjutkan.png"
+            hover_background "gui/button/lanjutkanhover.png"
+            action Jump("misi_2")
+            activate_sound "audio/sfx/click.mp3"
 
-        vbox:
-            ypos 350 xalign 0.5
-            text "score: [score_1]" color "#FFFFFF" size 50
-            text "Sampah terkumpul: [sampah_terkumpul]" color "#FFFFFF" size 50
-
-screen lose_condition:
+        button:
+            ypos 681 xpos 804
+            xsize 100 ysize 100
+            background "gui/button/cobalagi.png"
+            hover_background "gui/button/cobalagihover.png"
+            action Jump("misi_1")
+            activate_sound "audio/sfx/click.mp3"
+screen win_condition_2:
     
     frame:
-        background "images/akhir.png"
-        text "{b}MISI GAGAL{/b}" color "#FFFFFF" xalign 0.5 yalign 0.1 size 70
+        background "images/win.png"
+        #text "{b}MISI BERHASIL{/b}" color "#FFFFFF" xalign 0.5 yalign 0.1 size 70
+        button:
+            ypos 681 xpos 1006
+            xsize 100 ysize 100
+            background "gui/button/lanjutkan.png"
+            hover_background "gui/button/lanjutkanhover.png"
+            action Jump("misi_3")
+            activate_sound "audio/sfx/click.mp3"
 
-        vbox:
-            ypos 350 xalign 0.5
-            text "score: [score_1]" color "#FFFFFF" size 50
-            text "Sampah terkumpul: [sampah_terkumpul]" color "#FFFFFF" size 50
+        button:
+            ypos 681 xpos 804
+            xsize 100 ysize 100
+            background "gui/button/cobalagi.png"
+            hover_background "gui/button/cobalagihover.png"
+            action Jump("misi_2")
+            activate_sound "audio/sfx/click.mp3"
+screen win_condition_3:
+    
+    frame:
+        background "images/win.png"
+        #text "{b}MISI BERHASIL{/b}" color "#FFFFFF" xalign 0.5 yalign 0.1 size 70
+        button:
+            ypos 681 xpos 1006
+            xsize 100 ysize 100
+            background "gui/button/lanjutkan.png"
+            hover_background "gui/button/lanjutkanhover.png"
+            action Jump("Selesai")
+            activate_sound "audio/sfx/click.mp3"
 
+        button:
+            ypos 681 xpos 804
+            xsize 100 ysize 100
+            background "gui/button/cobalagi.png"
+            hover_background "gui/button/cobalagihover.png"
+            action Jump("misi_3")
+            activate_sound "audio/sfx/click.mp3"
+screen lose_condition_1:
+    frame:
+        background "images/lose.png"
+        button:
+            ypos 671 xpos 906
+            xsize 100 ysize 100
+            background "gui/button/cobalagi.png"
+            hover_background "gui/button/cobalagihover.png"
+            action Jump("misi_1")
+            activate_sound "audio/sfx/click.mp3"
+screen lose_condition_2:
+    frame:
+        background "images/lose.png"
+        button:
+            ypos 671 xpos 906
+            xsize 100 ysize 100
+            background "gui/button/cobalagi.png"
+            hover_background "gui/button/cobalagihover.png"
+            action Jump("misi_2")
+            activate_sound "audio/sfx/click.mp3"
+screen lose_condition_3:
+    frame:
+        background "images/lose.png"
+        button:
+            ypos 671 xpos 906
+            xsize 100 ysize 100
+            background "gui/button/cobalagi.png"
+            hover_background "gui/button/cobalagihover.png"
+            action Jump("misi_3")
+            activate_sound "audio/sfx/click.mp3"
 screen test:
     frame :
     

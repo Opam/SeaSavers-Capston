@@ -51,6 +51,8 @@ label splashscreen:
     return
 
 label start:
+    jump misi_3
+    #call screen win_condition_1
     play music dialogscene
     scene scene 1 with dissolve
     pause 1.0
@@ -154,24 +156,24 @@ label misi_1_berhasil:
     scene background
     hide screen game_screen_misi_1
     hide screen lose_condition
-    show screen win_condition
+    call screen win_condition_1
     $ renpy.pause(3.0, hard=True)
 
-    game "Selamat! Anda berhasil menyelesaikan Misi 1."
+    #game "Selamat! Anda berhasil menyelesaikan Misi 1."
     hide screen win_condition
-    jump misi_2
+    #jump misi_2
 
 label misi_1_gagal:
     stop music
     play sound wrong
     scene background
     hide screen game_screen_misi_1
-    show screen lose_condition
-    hide screen win_condition
+    call screen lose_condition_1
+    hide screen win_condition_1
     
     $ renpy.pause(3.0, hard=True)
-    game "Anda gagal menyelesaikan Misi 1. Coba lagi!"
-    jump misi_1
+    #game "Anda gagal menyelesaikan Misi 1. Coba lagi!"
+    #jump misi_1
 
 label misi_2:
     play music gameplay
@@ -190,37 +192,37 @@ label misi_2:
     call screen game_screen_misi_2
  
     # Tunggu sampai durasi habis
-    return
+    #return
 
 label misi_2_berhasil:
     stop music
     play sound win
     scene background
     hide screen game_screen_misi_2
-    hide screen lose_condition
-    show screen win_condition
+    hide screen lose_condition_2
+    call screen win_condition_2
     $ renpy.pause(3.0, hard=True)
-    game "Selamat! Anda berhasil menyelesaikan Misi 2."
+    #game "Selamat! Anda berhasil menyelesaikan Misi 2."
     
 
-    jump misi_3
+    #jump misi_3
 
 label misi_2_gagal:
     stop music
     play sound wrong
     scene background
     hide screen game_screen_misi_2
-    show screen lose_condition
+    call screen lose_condition_2
     hide screen win_condition
     $ renpy.pause(3.0, hard=True)
-    game "Anda gagal menyelesaikan Misi 2. Coba lagi!"
+    #game "Anda gagal menyelesaikan Misi 2. Coba lagi!"
     
 
-    jump misi_2
+    #jump misi_2
 
 label misi_3:
     play music gameplay
-    hide screen win_condition
+    hide screen win_condition_2
     scene background
     show ngomong at right:
         zoom 0.7
@@ -230,7 +232,7 @@ label misi_3:
     $ durasi = 90
     $ score_1 = 0
 
-    sagara "Misi terakhir!, dimisi ini kumpulkan score 6000 dalam waktu 90 detik"
+    sagara "Misi terakhir!, dimisi ini kumpulkan score 8000 dalam waktu 90 detik"
 
     call screen game_screen_misi_3
     
@@ -242,26 +244,26 @@ label misi_3_berhasil:
     play sound win
     scene background
     hide screen game_screen_misi_2
-    hide screen lose_condition
-    show screen win_condition
+    hide screen lose_condition_3
+    call screen win_condition_3
     $ renpy.pause(3.0, hard=True)
-    game "Selamat! Anda berhasil menyelesaikan Misi 3."
+    #game "Selamat! Anda berhasil menyelesaikan Misi 3."
     
 
-    jump Selesai
+    #jump Selesai
 
 label misi_3_gagal:
     stop music
     play sound wrong
     scene background
     hide screen game_screen_misi_2
-    show screen lose_condition
-    hide screen win_condition
+    call screen lose_condition_3
+    hide screen win_condition_3
     $ renpy.pause(3.0, hard=True)
     game "Anda gagal menyelesaikan Misi 3. Coba lagi!"
 
     
-    jump misi_3
+    #jump misi_3
 
 # Game selesai
 label Selesai:

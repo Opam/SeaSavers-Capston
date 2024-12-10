@@ -1,32 +1,34 @@
 ﻿I'm sorry, but an uncaught exception occurred.
 
 While running game code:
-  File "renpy/common/00start.rpy", line 193, in script
-    python:
-  File "renpy/common/00start.rpy", line 194, in <module>
-    renpy.execute_default_statement(True)
-  File "game/minigame.rpy", line 1, in execute_default
-    default score = 0.0
-Exception: store.score is being given a default a second time.
+  File "game/script.rpy", line 54, in script
+    call screen win_condition
+  File "renpy/common/000statements.rpy", line 671, in execute_call_screen
+    store._return = renpy.call_screen(name, *args, **kwargs)
+Exception: Screen win_condition is not known.
+
 
 -- Full Traceback ------------------------------------------------------------
 
 Full traceback:
-  File "renpy/common/00start.rpy", line 193, in script
-    python:
-  File "D:\Games\renpy-8.3.2-sdk\renpy\ast.py", line 821, in execute
-    renpy.python.py_exec_bytecode(self.code.bytecode, self.hide, store=self.store)
-  File "D:\Games\renpy-8.3.2-sdk\renpy\python.py", line 1178, in py_exec_bytecode
-    exec(bytecode, globals, locals)
-  File "renpy/common/00start.rpy", line 194, in <module>
-    renpy.execute_default_statement(True)
-  File "D:\Games\renpy-8.3.2-sdk\renpy\exports\statementexports.py", line 372, in execute_default_statement
-    i.execute_default(start)
-  File "game/minigame.rpy", line 1, in execute_default
-    default score = 0.0
-Exception: store.score is being given a default a second time.
+  File "game/script.rpy", line 54, in script
+    call screen win_condition
+  File "D:\Games\renpy-8.3.2-sdk\renpy\ast.py", line 1974, in execute
+    self.call("execute")
+  File "D:\Games\renpy-8.3.2-sdk\renpy\ast.py", line 1953, in call
+    return renpy.statements.call(method, parsed, *args, **kwargs)
+  File "D:\Games\renpy-8.3.2-sdk\renpy\statements.py", line 374, in call
+    return method(parsed, *args, **kwargs)
+  File "renpy/common/000statements.rpy", line 671, in execute_call_screen
+    store._return = renpy.call_screen(name, *args, **kwargs)
+  File "D:\Games\renpy-8.3.2-sdk\renpy\exports\statementexports.py", line 331, in call_screen
+    renpy.exports.show_screen(_screen_name, *args, _transient=True, **kwargs)
+  File "D:\Games\renpy-8.3.2-sdk\renpy\display\screen.py", line 1327, in show_screen
+    raise Exception("Screen %s is not known.\n" % (name[0],))
+Exception: Screen win_condition is not known.
+
 
 Windows-10-10.0.26100 AMD64
 Ren'Py 8.3.3.24111502
 Sea Savers 1.0
-Tue Dec 10 22:07:41 2024
+Wed Dec 11 01:12:42 2024

@@ -2,9 +2,9 @@
 errors listed below, and try again.
 
 
-File "game/screens.rpy", line 382: 'Text' is not a keyword argument or valid child of the screen statement.
-    Text "Pause"
-        ^
+File "game/minigame.rpy", line 528: 'Jump' is not a keyword argument or valid child of the button statement.
+    action action Jump("misi_1")
+                      ^
 
 Ren'Py Version: Ren'Py 8.3.3.24111502
-Wed Dec 11 00:17:16 2024
+Wed Dec 11 01:14:41 2024
