@@ -295,11 +295,11 @@ style quick_button_text:
 
 screen navigation():
 
-    vbox:
+    #vbox:
         #style_prefix "navigation"
 
         #xpos gui.navigation_xpos
-        ypos 0
+        #ypos 0
         #xpos 100
         #yalign 0.5
         #spacing 30
@@ -347,7 +347,8 @@ screen navigation():
 
                 #textbutton _("Tentang") action ShowMenu("about")
                 button:
-                    xsize 300 ysize 200
+                    ypos 565
+                    xsize 603 ysize 135
                     background "gui/button/tentangbiasa.png"
                     hover_background "gui/button/tentanghover.png"
                     action ShowMenu("about")
@@ -363,7 +364,8 @@ screen navigation():
             ## Web.
             #textbutton _("Keluar") action Quit(confirm=not main_menu)
                 button:
-                        xsize 300 ysize 200
+                        ypos 958
+                        xsize 603 ysize 135
                         background "gui/button/keluarbiasa.png"
                         hover_background "gui/button/keluarhover.png"
                         action Quit(confirm=not main_menu)
@@ -578,10 +580,10 @@ screen game_menu(title, scroll=None, yinitial=0.0, spacing=0):
 
     use navigation
 
-    textbutton _("Kembali"):
-        style "return_button"
+    #textbutton _("Kembali"):
+        #style "return_button"
 
-        action Return()
+        #action Return()
 
     #label title
 
