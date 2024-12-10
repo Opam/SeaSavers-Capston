@@ -26,7 +26,7 @@ define config.check_conflicting_properties = True
 ## Warna text pada antarmuka.
 
 ## Warna aksen yang digunakan sepanjang interface sampai pewarnaan text.
-define gui.accent_color = '#00ffff'
+define gui.accent_color = '#990000'
 
 ## Warna yang di gunakan untuk warna tombol text jika di pilih atau di tekan.
 define gui.idle_color = '#707070'
@@ -36,7 +36,7 @@ define gui.idle_color = '#707070'
 define gui.idle_small_color = '#606060'
 
 ## Warna yang di gunakan untuk tombol dan bar yang di pilih.
-define gui.hover_color = '#00ffff'
+define gui.hover_color = '#990000'
 
 ## Warna yang digunakan untuk text tombol ketika di pijit tapi tidak di fokus.
 ## Tombol di pilih jika terdapat di layar saat ini atau value preferensi.
@@ -52,26 +52,27 @@ define gui.muted_color = '#c16666'
 define gui.hover_muted_color = '#d69999'
 
 ## Warna yang di gunakan untuk dialog dan text pilihan menu.
-define gui.text_color = '#003f99'
-define gui.interface_text_color = '#003f99'
+define gui.text_color = '#000000'
+define gui.interface_text_color = '#404040'
 
 
 ## Font dan ukuran Font ########################################################
 
 ## Font yang digunakan untuk text in-game.
-define gui.text_font = "DejaVuSans.ttf"
+define gui.text_font = "gui/font/SourceSerif4-VariableFont.ttf"
 
 ## Font yang di gunakan untuk nama karakter.
-define gui.name_text_font = "DejaVuSans.ttf"
+define gui.name_text_font = "gui/font/SourceSerif4-VariableFont.ttf"
+
 
 ## Font yang digunakan untuk text di luar permainan.
 define gui.interface_text_font = "DejaVuSans.ttf"
 
 ## Ukuran normal dialog text.
-define gui.text_size = 33
+define gui.text_size = 40
 
 ## Ukuran dari nama karakter.
-define gui.name_text_size = 45
+define gui.name_text_size = 50
 
 ## Ukuran text antarmuka permainan.
 define gui.interface_text_size = 33
@@ -107,12 +108,12 @@ define gui.textbox_yalign = 1.0
 
 
 ## Penempatan nama karakter yang berbicara, hampir sama dengan kotak text.
-define gui.name_xpos = 360
-define gui.name_ypos = 0
+define gui.name_xpos = 950
+define gui.name_ypos = -50
 
 ## Penempatan  horizontal nama karakter. Ini dapat berupa 0.0 untuk rata kiri,
 ## 0.5 untuk rata tengah, dan 1.0 untuk rata kanan.
-define gui.name_xalign = 0.0
+define gui.name_xalign = 0.5
 
 ## Lebar, panjang, dan tepi dari kotak berisi nama karakter, Atau None untuk
 ## secara otomatis mengukur nya.
@@ -130,15 +131,15 @@ define gui.namebox_tile = False
 ## Penempatan dialog itu relatif pada kotaktext. Ini dapat berisi angka dari
 ## pixel yang relativ mulai dari sisi kiri sampai atas dari kotaknama, atau 0.5
 ## untuk tengah.
-define gui.dialogue_xpos = 402
+define gui.dialogue_xpos = 950
 define gui.dialogue_ypos = 75
 
 ## Lebar maximum dari dialog text, dalam pixel.
-define gui.dialogue_width = 1116
+define gui.dialogue_width = 1700
 
 ## rata tengah dari text dialog. Ini dapat berisi 0.0 untuk rata kiri, atau 0.5
 ## untuk tengah, dan 1.0 untuk kanan.
-define gui.dialogue_text_xalign = 0.0
+define gui.dialogue_text_xalign = 0.5
 
 
 ## Tombol ######################################################################

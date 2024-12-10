@@ -3,9 +3,29 @@ default sampah_terkumpul = 0
 default score_1 = 0
 define config.rollback_enabled = False
 # Variabel karakter
-define sagara = Character("Sagara", color = "#9afa5a", who_bold=True, who_outlines = [(1, "#000")])
-define ibu = Character("Ibu", color = "#c9770a", who_bold=True, who_outlines = [(1,"#000")])
-define pembawa_berita = Character("Pembawa Berita", color = "#0048ff", who_bold=True, who_outlines = [(1, "#000")])
+define sagara = Character("Sagara", color = "#000000")
+define ibu = Character("Ibu", color = "#000000")
+define pembawa_berita = Character("Pembawa Berita", color = "#000000")
+define narrator = Character(None, what_style="narrator_style")
+define game = Character(None, what_style="game_style")
+
+style narrator_style is default:
+    font "gui/font/monotype-corsiva.ttf"
+    size 45
+    color "#000000"
+    xpos 170
+    ypos 70 
+    text_align 0.5
+    xmaximum 1600
+
+style game_style is default:
+    font "gui/font/SourceSerif4-VariableFont.ttf"
+    size 45
+    color "#000000"
+    xpos 400
+    ypos 70 
+    text_align 0.5
+    xmaximum 1300
 
 # animasi masuk
 transform fade_in:
@@ -26,6 +46,10 @@ style text_center:
     size 40
     color "#fff"
 
+label splashscreen:
+    $ renpy.movie_cutscene("movies/splashscreen.mpg")
+    return
+
 label start:
     play music dialogscene
     scene scene 1 with dissolve
@@ -36,29 +60,30 @@ label start:
     stop music
 
     play music banguntidur
+    scene dapur with dissolve
     ibu "SAGARAAA!!!! BANGUNNN!!! SUDAH JAM 8 KATANYA KAMU PAGI INI MAU KE LAUT"
-    scene scene 1 1
-    show menguap at right, fade_in:
+    show menguap at right with easeinright:
         zoom 0.7
         ypos 1.4
     sagara "Iya sebentar..."
     ibu "Ayo cepat bangun, nanti siang kita masih ada acara di kota sebelah ayo bangun"
     sagara "Iya ibu, aku mau sarapan sebentar sebelum pergi ke laut"
+    
+    scene dapur with dissolve    
+    show bangun tidur at center, fade_in:
+        zoom 0.7
+        ypos 1.4
+    sagara "Ada berita apa pagi ini"    
     scene black with fade
     stop music
 
-    # scene lihat berita di televisi
+    # scene berita di televisi
     play music breakingnews
-    scene dapur with dissolve
-    show bangun tidur at right, fade_in:
-        zoom 0.7
-        ypos 1.4
-    sagara "Ada berita apa pagi ini"
     scene scene 2 with dissolve
     pembawa_berita "Selamat pagi,pemirsa. pagi ini Kami membawa kabar yang sangat memprihatinkan tentang kondisi lautan kita."
 
     scene scene 2 2
-    show bangun tidur at right:
+    show kesel at right with easeinright:
         zoom 0.7
         ypos 1.4
     sagara "Hadehh, lagi-lagi berita tentang orang buang sampah ke laut, stress."
@@ -75,8 +100,8 @@ label start:
     pembawa_berita "Setiap langkah kecil dari kita semua bisa membawa perubahan besar."
     pembawa_berita "Mari kita bersama-sama menjaga lautan kita agar tetap indah,sehat dan menj-"
 
-    scene dapur 
-    show kesel at right:
+    scene scene 2 2
+    show kesel at center:
         zoom 0.7
         ypos 1.4
     sagara "Huft, masih ada orang yang buang sampah ke laut semoga cepat tersadar."
@@ -106,15 +131,19 @@ label lautan:
 
 label misi_1:
     # Menampilkan screen game
-    scene black
+    scene background
+    show ngomong at right:
+        zoom 0.7
+        ypos 1.4
     play music gameplay
 
     $ durasi = 120
     $ sampah_terkumpul = 0
     $ renpy.pause(1.0, hard=True)
     
-    "Misi 1: Kumpulkan 50 sampah dalam waktu 120 detik!"
+    sagara "Misi 1: Kumpulkan 50 sampah dalam waktu 120 detik!"
     call screen game_screen_misi_1
+   
 
     # Tunggu sampai durasi habis
     return
@@ -122,39 +151,41 @@ label misi_1:
 label misi_1_berhasil:
     stop music
     play sound win
+    scene background
     hide screen game_screen_misi_1
     hide screen lose_condition
     show screen win_condition
     $ renpy.pause(3.0, hard=True)
 
-    "Selamat! Anda berhasil menyelesaikan Misi 1."
+    game "Selamat! Anda berhasil menyelesaikan Misi 1."
     hide screen win_condition
     jump misi_2
 
 label misi_1_gagal:
     stop music
     play sound wrong
+    scene background
     hide screen game_screen_misi_1
     show screen lose_condition
     hide screen win_condition
     
     $ renpy.pause(3.0, hard=True)
-    "Anda gagal menyelesaikan Misi 1. Coba lagi!"
+    game "Anda gagal menyelesaikan Misi 1. Coba lagi!"
     jump misi_1
 
 label misi_2:
     play music gameplay
     hide screen win_condition
-    scene bgkanan
+    scene background
+    show ngomong at right:
+        zoom 0.7
+        ypos 1.4
     $ durasi = 90
     $ score_1 = 0.0
-
     
-    
-    "Misi 2: Kumpulkan skor sebanyak 6000 dalam waktu 60 detik!"
-    "akan ada item buff dan ikan"
-    "buff akan menambah jumlah spawn sampah dan melipat gandakan score"
-    "menangkap ikan akan mengurangi score"
+    sagara "Misi 2: Kumpulkan skor sebanyak 6000 dalam waktu 60 detik!"
+    sagara "Akan ada item buff dan ikan, buff akan menambah jumlah spawn sampah dan melipat gandakan score"
+    sagara "Jika menangkap ikan akan mengurangi score"
 
     call screen game_screen_misi_2
  
@@ -164,11 +195,12 @@ label misi_2:
 label misi_2_berhasil:
     stop music
     play sound win
+    scene background
     hide screen game_screen_misi_2
     hide screen lose_condition
     show screen win_condition
     $ renpy.pause(3.0, hard=True)
-    "Selamat! Anda berhasil menyelesaikan Misi 2."
+    game "Selamat! Anda berhasil menyelesaikan Misi 2."
     
 
     jump misi_3
@@ -176,11 +208,12 @@ label misi_2_berhasil:
 label misi_2_gagal:
     stop music
     play sound wrong
+    scene background
     hide screen game_screen_misi_2
     show screen lose_condition
     hide screen win_condition
     $ renpy.pause(3.0, hard=True)
-    "Anda gagal menyelesaikan Misi 2. Coba lagi!"
+    game "Anda gagal menyelesaikan Misi 2. Coba lagi!"
     
 
     jump misi_2
@@ -188,14 +221,16 @@ label misi_2_gagal:
 label misi_3:
     play music gameplay
     hide screen win_condition
-    scene bgkanan
+    scene background
+    show ngomong at right:
+        zoom 0.7
+        ypos 1.4
 
     $ sampah_speed = 5
     $ durasi = 90
     $ score_1 = 0
 
-    "Misi terakhir"
-    "kumpulkan score 6000 dalam waktu 90 detik"
+    sagara "Misi terakhir!, dimisi ini kumpulkan score 6000 dalam waktu 90 detik"
 
     call screen game_screen_misi_3
     
@@ -205,11 +240,12 @@ label misi_3:
 label misi_3_berhasil:
     stop music
     play sound win
+    scene background
     hide screen game_screen_misi_2
     hide screen lose_condition
     show screen win_condition
     $ renpy.pause(3.0, hard=True)
-    "Selamat! Anda berhasil menyelesaikan Misi 3."
+    game "Selamat! Anda berhasil menyelesaikan Misi 3."
     
 
     jump Selesai
@@ -217,26 +253,28 @@ label misi_3_berhasil:
 label misi_3_gagal:
     stop music
     play sound wrong
+    scene background
     hide screen game_screen_misi_2
     show screen lose_condition
     hide screen win_condition
     $ renpy.pause(3.0, hard=True)
-    "Anda gagal menyelesaikan Misi 3. Coba lagi!"
+    game "Anda gagal menyelesaikan Misi 3. Coba lagi!"
 
+    
     jump misi_3
 
 # Game selesai
 label Selesai:
-    play music ending
     hide screen win_condition
-    hide screen game_screen
+    hide screen game_screen      
     scene scene 5:
         zoom 0.7
-
     "Sagara akhirnya selesai membersihkan sampah yang mengapung dilautan dan dia mulai mengemasi sampah ke dalam tas sampah"
-    scene scene 6:
-        zoom 0.7
-
     sagara "Hufff akhirnya selesai juga ternyata banyak juga, untung aku membawa banyak tas sampah hari ini semoga sesampainya di pantai orang tidak mengira aku habis mencuri uang di bank."
+    
+    play music ending   
+    scene black
+    centered ""
     stop music
+
     return
