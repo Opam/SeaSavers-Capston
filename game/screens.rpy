@@ -299,7 +299,7 @@ screen navigation():
         #style_prefix "navigation"
 
         #xpos gui.navigation_xpos
-        ypos 50
+        ypos 0
         #xpos 100
         #yalign 0.5
         #spacing 30
@@ -308,7 +308,7 @@ screen navigation():
         if main_menu:
                 #MULAI
                 button:
-                    ypos 283
+                    ypos 307
                     xsize 603 ysize 135
                     background "gui/button/mulaibiasa.png"
                     hover_background "gui/button/mulaihover.png"
@@ -320,13 +320,13 @@ screen navigation():
                         #xalign 0.2 yalign 0.5
                 
                 #textbutton _("Lanjutkan") action ShowMenu("load")
-                button:
-                    xsize 300 ysize 200
+                #button:
+                    #xsize 300 ysize 200
                     #xalign 0.2 yalign 0.5
-                    background "gui/button/lanjutkanbiasa.png"
-                    hover_background "gui/button/lanjutkanhover.png"
-                    action ShowMenu("load")
-                    activate_sound "audio/sfx/click.mp3"
+                    #background "gui/button/lanjutkanbiasa.png"
+                    #hover_background "gui/button/lanjutkanhover.png"
+                    #action ShowMenu("load")
+                    #activate_sound "audio/sfx/click.mp3"
                     #text "Lanjutkan":
                         #size 48
                         #color "#3D8E99" 
@@ -334,7 +334,8 @@ screen navigation():
                 
                 #textbutton _("Setting") action ShowMenu("preferences")
                 button:
-                    xsize 300 ysize 200
+                    ypos 465
+                    xsize 603 ysize 135
                     background "gui/button/settingbiasa.png"
                     hover_background "gui/button/settinghover.png"
                     action ShowMenu("preferences")
