@@ -51,7 +51,7 @@ label splashscreen:
     return
 
 label start:
-    jump misi_3
+    #jump misi_3
     #call screen win_condition_1
     play music dialogscene
     scene scene 1 with dissolve
