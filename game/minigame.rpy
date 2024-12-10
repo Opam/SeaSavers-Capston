@@ -3,8 +3,8 @@ init python:
     import os
     import time
     
-
     score = 0.0
+    high_score = 0.0
     score_kg = 0.0
     sampah_list = [] 
     max_sampah = 3  
