@@ -115,7 +115,6 @@ label misi_1:
     
     "Misi 1: Kumpulkan 50 sampah dalam waktu 120 detik!"
     call screen game_screen_misi_1
-   
 
     # Tunggu sampai durasi habis
     return
