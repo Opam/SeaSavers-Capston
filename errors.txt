@@ -1,0 +1,10 @@
+﻿I'm sorry, but errors were detected in your script. Please correct the
+errors listed below, and try again.
+
+
+File "game/screens.rpy", line 303: keyword argument 'yalign' is incompatible with 'ypos'.
+    yalign 0.5
+          ^
+
+Ren'Py Version: Ren'Py 8.3.3.24111502
+Mon Dec  9 23:20:59 2024
