@@ -2,9 +2,9 @@
 errors listed below, and try again.
 
 
-File "game/screens.rpy", line 303: keyword argument 'yalign' is incompatible with 'ypos'.
-    yalign 0.5
-          ^
+File "game/screens.rpy", line 382: 'Text' is not a keyword argument or valid child of the screen statement.
+    Text "Pause"
+        ^
 
 Ren'Py Version: Ren'Py 8.3.3.24111502
-Mon Dec  9 23:20:59 2024
+Wed Dec 11 00:17:16 2024

@@ -379,14 +379,14 @@ screen navigation():
         else:
 
             #textbutton _("Riwayat") action ShowMenu("history")
-
+            text "Pause"
             #textbutton _("Simpan") action ShowMenu("save")
-                button:
-                    xsize 300 ysize 200
-                    background "gui/button/simpanbiasa.png"
-                    hover_background "gui/button/simpanhover.png"
-                    action ShowMenu("save")
-                    activate_sound "audio/buttonpress.mp3"
+                #button:
+                    #xsize 300 ysize 200
+                    #background "gui/button/simpanbiasa.png"
+                    #hover_background "gui/button/simpanhover.png"
+                    #action ShowMenu("save")
+                    #activate_sound "audio/buttonpress.mp3"
                     #text "Simpan":
                         #size 40
                         #color "#3D8E99"
@@ -402,24 +402,49 @@ screen navigation():
 
             ## Bantuan tidak perlu atau relevan dengan perangkat mobile.
             #textbutton _("Bantuan") action ShowMenu("help")
-            button:
-                xsize 300 ysize 200
-                background "gui/button/bantuanbiasa.png"
-                hover_background "gui/button/bantuanhover.png"
-                action ShowMenu("help")
-                activate_sound "audio/buttonpress.mp3"
+            #button:
+                #xsize 300 ysize 200
+                #background "gui/button/bantuanbiasa.png"
+                #hover_background "gui/button/bantuanhover.png"
+                #action ShowMenu("help")
+                #activate_sound "audio/buttonpress.mp3"
                 #text "Bantuan":
                     #size 40
                     #color "#3D8E99"
                     #xalign 0.1 yalign 0.5  
-
-            #textbutton _("Menu Utama") action MainMenu()
             button:
-                    xsize 300 ysize 200
-                    background "gui/button/utamabiasa.png"
-                    hover_background "gui/button/utamahover.png"
-                    action MainMenu()
-                    activate_sound "audio/buttonpress.mp3"
+                    ypos 465
+                    xsize 603 ysize 135
+                    background "gui/button/settingbiasa.png"
+                    hover_background "gui/button/settinghover.png"
+                    action ShowMenu("preferences")
+                    activate_sound "audio/sfx/click.mp3"
+                    #text "Setting":
+                        #size 48
+                        #color "#3D8E99"
+                        #xalign 0.2 yalign 0.5
+
+                #textbutton _("Tentang") action ShowMenu("about")
+            button:
+                ypos 565
+                xsize 603 ysize 135
+                background "gui/button/tentangbiasa.png"
+                hover_background "gui/button/tentanghover.png"
+                action ShowMenu("about")
+                activate_sound "audio/sfx/click.mp3"
+                #text "Tentang":
+                    #size 48
+                    #color "#3D8E99"
+                    #xalign 0.2 yalign 0.5
+            #textbutton _("Menu Utama") action MainMenu()
+
+            button:
+                ypos 700
+                xsize 603 ysize 135
+                background "gui/button/utamabiasa.png"
+                hover_background "gui/button/utamahover.png"
+                action MainMenu()
+                activate_sound "audio/buttonpress.mp3"
                     #text "Menu Utama":
                         #size 40
                         #color "#3D8E99"
@@ -855,13 +880,13 @@ screen preferences():
 
                     vbox:
                         style_prefix "radio"
-                        text "{size=50}{color=#3D8E99}Tampilan{/color}{/size}" 
+                        text "{size=50}{color=#FFFF}{b}Tampilan{/b}{/color}{/size}" 
                         textbutton _("Jendela") action Preference("display", "window")
                         textbutton _("Layar Penuh") action Preference("display", "fullscreen")
                         
                 vbox:
                     style_prefix "check"
-                    text "{size=50}{color=#3D8E99}Lompati{/color}{/size}" 
+                    text "{size=50}{color=#FFFF}{b}Lompati{/b}{/color}{/size}" 
                     textbutton _("Belum Terlihat") action Preference("skip", "toggle")
                     textbutton _("Setelah Pilihan") action Preference("after choices", "toggle")
                     textbutton _("Transisi") action InvertSelected(Preference("transitions", "toggle"))

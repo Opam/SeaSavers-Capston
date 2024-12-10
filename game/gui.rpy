@@ -26,7 +26,7 @@ define config.check_conflicting_properties = True
 ## Warna text pada antarmuka.
 
 ## Warna aksen yang digunakan sepanjang interface sampai pewarnaan text.
-define gui.accent_color = '#00ffff'
+define gui.accent_color = '#ffffff'
 
 ## Warna yang di gunakan untuk warna tombol text jika di pilih atau di tekan.
 define gui.idle_color = '#707070'
