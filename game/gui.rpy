@@ -59,10 +59,10 @@ define gui.interface_text_color = '#404040'
 ## Font dan ukuran Font ########################################################
 
 ## Font yang digunakan untuk text in-game.
-define gui.text_font = "DejaVuSans.ttf"
+define gui.text_font = "gui/font/SourceSerif4-VariableFont.ttf"
 
 ## Font yang di gunakan untuk nama karakter.
-define gui.name_text_font = "DejaVuSans.ttf"
+define gui.name_text_font = "gui/font/SourceSerif4-VariableFont.ttf"
 
 ## Font yang digunakan untuk text di luar permainan.
 define gui.interface_text_font = "DejaVuSans.ttf"
