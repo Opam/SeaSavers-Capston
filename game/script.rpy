@@ -276,7 +276,11 @@ label Selesai:
     sagara "Hufff akhirnya selesai juga ternyata banyak juga, untung aku membawa banyak tas sampah hari ini semoga sesampainya di pantai orang tidak mengira aku habis mencuri uang di bank."
     
     play music ending   
-    scene black
+    scene black with fade
+    $ renpy.pause(2.0, hard=True)
+    scene ending
+    $ renpy.pause(4.0, hard=True)
+    scene black with fade
     centered ""
     stop music
 
