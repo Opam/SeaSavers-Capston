@@ -369,12 +369,12 @@ screen game_screen_misi_2:
         vbox:
             xalign 0.5 yalign 0.5
             text "[durasi]" size 70 xalign 0.5
-            text "Score: [score_1:.0f] / 6000" style "timer_text"
+            text "Score: [score_1:.0f] / 5000" style "timer_text"
 
         timer 1.0 repeat True action If(
             durasi > 0,
-            [SetVariable('durasi', durasi - 1), If(score_1 >= 6000, [Hide('game_screen_misi_2'), Jump('misi_2_berhasil')])],
-            [If(score_1 < 6000, [Hide('game_screen_misi_2'), Jump('misi_2_gagal')])]
+            [SetVariable('durasi', durasi - 1), If(score_1 >= 5000, [Hide('game_screen_misi_2'), Jump('misi_2_berhasil')])],
+            [If(score_1 < 5000, [Hide('game_screen_misi_2'), Jump('misi_2_gagal')])]
         )
 
     if buff_active:

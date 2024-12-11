@@ -186,7 +186,7 @@ label misi_2:
     $ durasi = 90
     $ score_1 = 0.0
     
-    sagara "Misi 2: Kumpulkan skor sebanyak 6000 dalam waktu 60 detik!"
+    sagara "Misi 2: Kumpulkan skor sebanyak 5000 dalam waktu 60 detik!"
     sagara "Akan ada item buff dan ikan, buff akan menambah jumlah spawn sampah dan melipat gandakan score"
     sagara "Jika menangkap ikan akan mengurangi score"
 
