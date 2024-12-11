@@ -451,9 +451,6 @@ screen navigation():
                         #xalign 0.1 yalign 0.5
 
         
-
-         
-
         
 
 

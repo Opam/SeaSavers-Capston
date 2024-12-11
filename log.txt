@@ -1,46 +1,61 @@
-2024-12-10 18:56:33 UTC
-Windows-10-10.0.26100
-Ren'Py 8.3.3.24111502
+2024-12-11 02:42:52 UTC
+Windows-10-10.0.19045
+Ren'Py 8.3.4.24120703
 
-Early init took 0.12s
-Loading error handling took 0.05s
-Loading script took 0.27s
-Loading save slot metadata took 0.06s
+Early init took 2.07s
+Loading error handling took 0.33s
+Loading script took 5.92s
+Loading save slot metadata took 0.28s
 Loading persistent took 0.00s
-Running init code took 0.07s
-Loading analysis data took 0.02s
+ - Init at game/gui.rpy:11 took 0.26428 s.
+Running init code took 0.55s
+Loading analysis data took 0.04s
 Analyze and compile ATL took 0.00s
-Reloading save slot metadata took 0.04s
+Reloading save slot metadata took 0.05s
 Index archives took 0.00s
-Backing up script files to 'C:\\Users\\LENOVO\\AppData\\Roaming/RenPy/backups\\SeaSavers-Capston':
-Dump and make backups took 0.07s
+Dump and make backups took 0.00s
 Cleaning cache took 0.00s
 Making clean stores took 0.00s
-Initial gc took 0.06s
-DPI scale factor: 1.250000
+Initial gc took 0.08s
+DPI scale factor: 1.000000
 nvdrs: Loaded, about to disable thread optimizations.
 nvdrs: Disabled thread optimizations.
-Creating interface object took 0.49s
+Creating interface object took 0.82s
 Cleaning stores took 0.00s
-Init translation took 0.04s
-Build styles took 0.00s
+Init translation took 0.09s
+Build styles took 0.01s
 Load screen analysis took 0.00s
-Analyze screens took 0.02s
-Save screen analysis took 0.03s
-Prepare screens took 0.10s
-Save pyanalysis. took 0.00s
-Save bytecode. took 0.05s
+Analyze screens took 0.03s
+Save screen analysis took 0.05s
+Prepare screens took 0.20s
+Save pyanalysis. took 0.04s
+Save bytecode. took 0.07s
 Running _start took 0.00s
-Interface start took 0.39s
+Interface start took 0.58s
 
 Initializing gl2 renderer:
-primary display bounds: (0, 0, 1920, 1080)
+primary display bounds: (0, 0, 1366, 768)
 swap interval: 1 frames
 Windowed mode.
 Vendor: "b'NVIDIA Corporation'"
-Renderer: b'NVIDIA GeForce MX350/PCIe/SSE2'
-Version: b'4.6.0 NVIDIA 561.09'
+Renderer: b'NVIDIA GeForce 930M/PCIe/SSE2'
+Version: b'4.6.0 NVIDIA 546.01'
 Display Info: None
-Screen sizes: virtual=(1920, 1080) physical=(1029, 579) drawable=(1029, 579)
+Screen sizes: virtual=(1920, 1080) physical=(1184, 666) drawable=(1184, 666)
 Maximum texture size: 4096x4096
 INFO:renpy_warp_service:service thread started. periodically scanning ports for warp server
+INFO:renpy_warp_service:connected to renpy warp socket server on :40111
+Screen sizes: virtual=(1920, 1080) physical=(1366, 715) drawable=(1366, 715)
+Maximum texture size: 4096x4096
+Screen sizes: virtual=(1920, 1080) physical=(1366, 768) drawable=(1366, 768)
+Maximum texture size: 4096x4096
+Cleaning stores took 0.00s
+Init translation took 0.00s
+Build styles took 0.01s
+Load screen analysis took 0.12s
+Analyze screens took 0.00s
+Prepare screens took 0.00s
+Running _start took 0.00s
+INFO:renpy_warp_service:closing websocket connection :40111
+INFO:renpy_warp_service:connection replaced, service exiting
+INFO:renpy_warp_service:service closed

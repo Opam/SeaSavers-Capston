@@ -57,13 +57,13 @@ label start:
     scene scene 1 with dissolve
     pause 1.0
     "Di suatu pagi yang indah di kota kecil di pinggiran pantai yang bernama kota Pantara Indah"
-    "Kota ini terkenal dengan pasar ikan yang sangat fresh karena para nelayan di pasar mengambil ikan langsung dari lautan sana "
-    "tapi akhir akhir ini banyak ikan yang kurang fresh di karenakan banyak limbah sampah yang tersebar di lautan bahkan terdapat ikan yang cacat dikarenakan limbah sampah plastik yang di buang ke lautan."
+    "Kota ini terkenal dengan pasar ikan yang sangat segar karena para nelayan di pasar mengambil ikan langsung dari lautan sana "
+    "tapi akhir akhir ini banyak ikan yang kurang segar di karenakan banyak limbah sampah yang tersebar di lautan bahkan terdapat ikan yang cacat dikarenakan limbah sampah plastik yang di buang ke lautan."
     stop music
 
     play music banguntidur
     scene dapur with dissolve
-    ibu "SAGARAAA!!!! BANGUNNN!!! SUDAH JAM 8 KATANYA KAMU PAGI INI MAU KE LAUT"
+    ibu "SAGARAAA!!!! BANGUNNN!!! SUDAH JAM 8 KATANYA KAMU PAGI INI MAU KE LAUT..."
     show menguap at right with easeinright:
         zoom 0.7
         ypos 1.4
@@ -75,20 +75,20 @@ label start:
     show bangun tidur at center, fade_in:
         zoom 0.7
         ypos 1.4
-    sagara "Ada berita apa pagi ini"    
+    sagara "Aku masih ngantuk banget semalaman begadang, ada berita apa pagi ini?"    
     scene black with fade
     stop music
 
     # scene berita di televisi
     play music breakingnews
     scene scene 2 with dissolve
-    pembawa_berita "Selamat pagi,pemirsa. pagi ini Kami membawa kabar yang sangat memprihatinkan tentang kondisi lautan kita."
+    pembawa_berita "Selamat pagi pemirsa, pagi ini Kami membawa kabar yang sangat memprihatinkan tentang kondisi lautan kita."
 
     scene scene 2 2
     show kesel at right with easeinright:
         zoom 0.7
         ypos 1.4
-    sagara "Hadehh, lagi-lagi berita tentang orang buang sampah ke laut, stress."
+    sagara "Hadehh, lagi-lagi berita tentang banyak sampah ke lautan mau sampai kapan coba berita kaya gini, stress."
 
     scene scene 2
     pembawa_berita "Limbah plastik terus meningkat dan kini telah memenuhi perairan kita, mencemari ekosistem laut yang menjadi sumber kehidupan."
@@ -100,13 +100,15 @@ label start:
     pembawa_berita "Terumbu karang yang dulu indah kini tertutup oleh limbah, mengganggu pemanngan bawah laut yang memikat hati."
     pembawa_berita "Situasi ini tidak bisa dibiarkan, kita semua harus bertindak! Kurangi penggunaan plastik dan pastikan sampah dibuang ke tempat yang semestinya."
     pembawa_berita "Setiap langkah kecil dari kita semua bisa membawa perubahan besar."
-    pembawa_berita "Mari kita bersama-sama menjaga lautan kita agar tetap indah,sehat dan menj-"
+    pembawa_berita "Mari kita bersama-sama menjaga lautan kita agar tetap indah,sehat dan menjadi sumber kehidupan yang berkelanjutan."
+    pembawa_berita "Itulah berita dari kami, semoga kita semua bisa bersama-sama menjaga kelestarian lautan kita. Terima kasih dan selamat pagi."
 
     scene scene 2 2
     show kesel at center:
         zoom 0.7
         ypos 1.4
     sagara "Huft, masih ada orang yang buang sampah ke laut semoga cepat tersadar."
+    sagara "Oke! aku harus segera pergi ke laut untuk membersihkan sampah yang ada di laut, semoga aku bisa membersihkan sampah yang ada"
     stop music
     jump pergikelaut
     
@@ -127,7 +129,7 @@ label lautan:
         zoom 0.7
     pause 1.0
     "Sesampainya di lautan sagara melihat banyak sekali sampah yang mengapung di lautan yang mengganggu pemandangannya, sagara yang berada di atas kapal mulai bergegas untuk mengambil sampah-sampah"
-    sagara "Hadeehh, kenapa banyak bgt sih sampah yang ngapung bikin repot orang lain saja"
+    sagara "Hadeehh, kenapa banyak banget sih sampah yang ngapung bikin repot orang lain saja"
     stop music
     jump misi_1
 
@@ -145,7 +147,6 @@ label misi_1:
     
     sagara "Misi 1: Kumpulkan 50 sampah dalam waktu 120 detik!"
     call screen game_screen_misi_1
-   
 
     # Tunggu sampai durasi habis
     return
@@ -190,7 +191,7 @@ label misi_2:
     sagara "Jika menangkap ikan akan mengurangi score"
 
     call screen game_screen_misi_2
- 
+
     # Tunggu sampai durasi habis
     #return
 

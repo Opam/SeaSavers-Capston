@@ -49,7 +49,7 @@ init python:
             buff_y = random.randint(400, 800)  
             buff_speed_x = buff_speed if buff_x < 0 else -buff_speed  
             buff_item = {'x': buff_x, 'y': buff_y, 'speed_x': buff_speed_x, 'image': "images/buff/buff.png"}
-     
+
 
     def catch_buff(x, y):
         global buff_active, buff_timer, max_sampah, sampah_speed, buff_item
@@ -94,12 +94,12 @@ init python:
             sampah_y = random.randint(400, 800)
             sampah_image = random.choice(sampah_images) 
             
-         
+
             sampah_list.append({'x': sampah_x, 'y': sampah_y, 'image': sampah_image, 'speed_x': sampah_speed_x, 'popup_score': None, 'caught': False, 'opacity': 1.0, 'rise_speed': 2})
 
 
 
-  
+
     def spawn_ikan():
         if len(ikan_list) < max_ikan:  
             if random.choice([True, False]):  
