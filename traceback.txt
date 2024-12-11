@@ -1,18 +1,31 @@
 ﻿I'm sorry, but an uncaught exception occurred.
 
 While running game code:
-  File "game/script.rpy", line 54, in script
-    call screen win_condition
+  File "game/script.rpy", line 277, in script
+    call screen game_screen
   File "renpy/common/000statements.rpy", line 671, in execute_call_screen
     store._return = renpy.call_screen(name, *args, **kwargs)
-Exception: Screen win_condition is not known.
-
+  File "game/minigame.rpy", line 248, in execute
+    screen game_screen:
+  File "game/minigame.rpy", line 248, in execute
+    screen game_screen:
+  File "game/minigame.rpy", line 249, in execute
+    timer 1.0 repeat True action If(
+  File "game/minigame.rpy", line 249, in keywords
+    timer 1.0 repeat True action If(
+  File "game/minigame.rpy", line 258, in <module>
+    If(score >= 4000, SetVariable('sampah_speed', sampah_speed = 5)),
+  File "renpy/common/00action_data.rpy", line 89, in __init__
+    super(Variable, self).__init__(store, name, *args, **kwargs)
+  File "renpy/common/00action_data.rpy", line 70, in __init__
+    super(Field, self).__init__(*args, **kwargs)
+TypeError: __init__() missing 1 required positional argument: 'value'
 
 -- Full Traceback ------------------------------------------------------------
 
 Full traceback:
-  File "game/script.rpy", line 54, in script
-    call screen win_condition
+  File "game/script.rpy", line 277, in script
+    call screen game_screen
   File "D:\Games\renpy-8.3.2-sdk\renpy\ast.py", line 1974, in execute
     self.call("execute")
   File "D:\Games\renpy-8.3.2-sdk\renpy\ast.py", line 1953, in call
@@ -21,14 +34,45 @@ Full traceback:
     return method(parsed, *args, **kwargs)
   File "renpy/common/000statements.rpy", line 671, in execute_call_screen
     store._return = renpy.call_screen(name, *args, **kwargs)
-  File "D:\Games\renpy-8.3.2-sdk\renpy\exports\statementexports.py", line 331, in call_screen
-    renpy.exports.show_screen(_screen_name, *args, _transient=True, **kwargs)
-  File "D:\Games\renpy-8.3.2-sdk\renpy\display\screen.py", line 1327, in show_screen
-    raise Exception("Screen %s is not known.\n" % (name[0],))
-Exception: Screen win_condition is not known.
-
+  File "D:\Games\renpy-8.3.2-sdk\renpy\exports\statementexports.py", line 345, in call_screen
+    rv = renpy.ui.interact(mouse="screen", type="screen", roll_forward=roll_forward)
+  File "D:\Games\renpy-8.3.2-sdk\renpy\ui.py", line 301, in interact
+    rv = renpy.game.interface.interact(roll_forward=roll_forward, **kwargs)
+  File "D:\Games\renpy-8.3.2-sdk\renpy\display\core.py", line 2215, in interact
+    repeat, rv = self.interact_core(preloads=preloads, trans_pause=trans_pause, pause=pause, pause_start=pause_start, pause_modal=pause_modal, **kwargs) # type: ignore
+  File "D:\Games\renpy-8.3.2-sdk\renpy\display\core.py", line 2745, in interact_core
+    root_widget.visit_all(lambda d : d.per_interact())
+  File "D:\Games\renpy-8.3.2-sdk\renpy\display\displayable.py", line 434, in visit_all
+    d.visit_all(callback, seen)
+  File "D:\Games\renpy-8.3.2-sdk\renpy\display\displayable.py", line 434, in visit_all
+    d.visit_all(callback, seen)
+  File "D:\Games\renpy-8.3.2-sdk\renpy\display\displayable.py", line 434, in visit_all
+    d.visit_all(callback, seen)
+  File "D:\Games\renpy-8.3.2-sdk\renpy\display\screen.py", line 480, in visit_all
+    callback(self)
+  File "D:\Games\renpy-8.3.2-sdk\renpy\display\core.py", line 2745, in <lambda>
+    root_widget.visit_all(lambda d : d.per_interact())
+  File "D:\Games\renpy-8.3.2-sdk\renpy\display\screen.py", line 491, in per_interact
+    self.update()
+  File "D:\Games\renpy-8.3.2-sdk\renpy\display\screen.py", line 697, in update
+    self.screen.function(**self.scope)
+  File "game/minigame.rpy", line 248, in execute
+    screen game_screen:
+  File "game/minigame.rpy", line 248, in execute
+    screen game_screen:
+  File "game/minigame.rpy", line 249, in execute
+    timer 1.0 repeat True action If(
+  File "game/minigame.rpy", line 249, in keywords
+    timer 1.0 repeat True action If(
+  File "game/minigame.rpy", line 258, in <module>
+    If(score >= 4000, SetVariable('sampah_speed', sampah_speed = 5)),
+  File "renpy/common/00action_data.rpy", line 89, in __init__
+    super(Variable, self).__init__(store, name, *args, **kwargs)
+  File "renpy/common/00action_data.rpy", line 70, in __init__
+    super(Field, self).__init__(*args, **kwargs)
+TypeError: __init__() missing 1 required positional argument: 'value'
 
 Windows-10-10.0.26100 AMD64
 Ren'Py 8.3.3.24111502
 Sea Savers 1.0
-Wed Dec 11 01:12:42 2024
+Thu Dec 12 01:06:09 2024

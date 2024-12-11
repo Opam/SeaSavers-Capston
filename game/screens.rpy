@@ -79,7 +79,7 @@ style frame_2:
     background Frame("gui/frame2.png", gui.frame_borders, tile=gui.frame_tile)
 
 style frame_3:
-    background Frame("gui/frame3.png", gui.frame_borders, tile=gui.frame_tile)
+    background Frame("gui/timebox.png", gui.frame_borders, tile=gui.frame_tile)
 
 style frame_4:
     background Frame("images/timerscore.png", gui.frame_borders, tile=gui.frame_tile)

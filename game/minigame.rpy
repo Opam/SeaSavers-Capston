@@ -1,10 +1,14 @@
+
+    
 init python:
     import random
     import os
     import time
     
-    score = 0.0
-    high_score = 0.0
+    if not persistent.high_score:
+        persistent.high_score = 0
+
+    score = 0
     score_kg = 0.0
     sampah_list = [] 
     max_sampah = 3  
@@ -40,7 +44,7 @@ init python:
         ikan_images.append(f"images/ikan/ikankiri_{i}.png")
         ikan_images.append(f"images/ikan/ikankanan_{i}.png")
 
-
+    
 
     def spawn_buff():
         global buff_item
@@ -129,31 +133,35 @@ init python:
                     score_kg += 0.2
                     sampah_terkumpul += 1
                     score_1 += 20 * multiplier
+                    #persistent.high_score += 20 * multiplier
                 elif "kaleng" in sampah['image']:
                     popup_score = f"+{45 * multiplier}"
                     score += 45 * multiplier
                     score_kg += 0.4
                     sampah_terkumpul += 1
                     score_1 += 45 * multiplier
+                    #persistent.high_score += 45 * multiplier
                 elif "kardus" in sampah['image']:
                     popup_score = f"+{35 * multiplier}"
                     score += 35 * multiplier
                     score_kg += 0.3
                     sampah_terkumpul += 1
                     score_1 += 35 * multiplier
+                    #persistent.high_score += 35 * multiplier
                 elif "indomi" in sampah['image']:
                     popup_score = f"+{50 * multiplier}"
                     score += 50 * multiplier
                     score_kg += 0.5
                     sampah_terkumpul += 1
                     score_1 += 50 * multiplier
+                    #persistent.high_score += 50 * multiplier
                 else:
                     popup_score = f"+{10 * multiplier}"
                     score += 10 * multiplier
                     score_kg += 0.1
                     sampah_terkumpul += 1
                     score_1 += 10 * multiplier
-                
+                    #persistent.high_score += 10 * multiplier
                 sampah['popup_score'] = {'text': popup_score, 'timer': 0.5}  
                 break
 
@@ -164,12 +172,12 @@ init python:
                 ikan['caught'] = True
                 ikan['speed_x'] = 0
                 score_1 -= 12  
-                score -= 12  
+                #score -= 12  
                 break
 
     
     def update_items():
-        global sampah_list, ikan_list, paus_list, score, buff_timer, buff_spawn_timer, buff_item, paus_spawn_timer
+        global sampah_list, ikan_list, paus_list, score, buff_timer, buff_spawn_timer, buff_item, paus_spawn_timer,score_1
         buff_spawn_timer += 1 / 60.0
         paus_spawn_timer += 1 / 120.0
 
@@ -210,11 +218,11 @@ init python:
                 sampah['x'] += sampah['speed_x']  
                 if sampah['x'] < -100 or sampah['x'] > config.screen_width + 100:  
                     sampah_list.remove(sampah)
-                    score -= 6 if "kresek" in sampah['image'] else 3  
-                    score -= 10 if "kardus" in sampah['image'] else 3
-                    score -= 15 if "indomi" in sampah['image'] else 3
-                    score -= 13 if "kaleng" in sampah['image'] else 3
-                    score = max(score, 0)  
+                    score_1 -= 6 if "kresek" in sampah['image'] else 3  
+                    score_1 -= 10 if "kardus" in sampah['image'] else 3
+                    score_1 -= 15 if "indomi" in sampah['image'] else 3
+                    score_1 -= 13 if "kaleng" in sampah['image'] else 3
+                    score_1 = max(score, 0)  
 
         for ikan in ikan_list[:]:
             if ikan['caught']:
@@ -226,6 +234,10 @@ init python:
                 if ikan['x'] < -100 or ikan['x'] > config.screen_width + 100:
                     ikan_list.remove(ikan)
 
+    def update_high_score(score):
+        if score > persistent.high_score:
+            persistent.high_score = score
+
 style timer_text:
     size 30
     color "#000000"
@@ -234,36 +246,50 @@ style timer_text:
 
 
 screen game_screen:
-    timer 1 repeat True action If(durasi>0, SetVariable('durasi', durasi -1), [Hide('game_screen'), Jump('timeout')])
-
-    add "BG_minigame.png"
-    vbox:
-        frame:
-            xsize 500 ysize 100
-            #yalign 0.1 xpos 0  # Posisi frame di bagian atas layar
-            text "{b}Quest:{/b}"  # Menampilkan teks Quest
-            vbox:
-                text "Kumpulkan plastik:"
-
-        frame:
-            xsize 500 ysize 100
-            #yalign 0.0 xpos 0  # Posisi frame di bawah layar
-            vbox:
-                text "{b}Score:{/b} [score:.0f] "  # Menampilkan skor
-                text "{b}Sampah:{/b} [score_kg:.1f]kg" xpos 0 ypos 5  
-                
-        frame:
-
-            xsize 500 ysize 100
-            text "Time left: [durasi] seconds" style "timer_text"
+    timer 1.0 repeat True action If(
+    durasi > 0,
+    [
+        SetVariable('durasi', durasi - 1),
+        
+        # Menambah durasi setiap kelipatan 25 skor
+        If(score % 25 == 0 and score > 0, SetVariable('durasi', durasi + 1)),
+        
+        # Menambah sampah_speed berdasarkan skor
+        If(score > 4000, SetVariable('sampah_speed', 5)),
+        If(score > 9000, SetVariable('sampah_speed', 6)),
+        If(score > 13000, SetVariable('sampah_speed', 7)),
+        If(score > 15000, SetVariable('sampah_speed', 8))
+    ],
+    [If(durasi == 0, [Hide('game_screen'), Jump('timeout')])])
+    add "bgkanan.png"
+    frame:
+        style "frame_3"             
+        xsize 620 ysize 620
+        ypos -200 xalign 0.99
+        #xalign 0.5  
+        vbox:
+            xalign 0.4 yalign 0.55
+            text "{b}[durasi]{/b}" size 120 xalign 0.4
+            #text "Score: [score_1:.0f] / 6000" style "timer_text"
+            
+    #add "gui/questnotif.png" zoom 0.15 ypos 0 xpos 0
+    frame:
+        style "frame_2"
+        xsize 600 ysize 150
+        vbox:
+            spacing 10
+            text "{b}Score            : [score]{/b}"  xpos 10
+            text "{b}High Score : [persistent.high_score]{/b}" xpos 10
 
     if buff_active:
         frame:
-            xsize 500 ysize 100
-            yalign 0.1 xpos 1200
+            style "frame_2"
+            xsize 300 ysize 150 ypos 160
             vbox:
-                text "{b}BUFF ACTIVE!{/b}" color "#FFD700"
-                text "Time Left: [buff_timer:.1f]s" xpos 0 ypos 10
+                xalign 0.1 yalign 0.5
+                text "Power Up!" color "#ff0000"
+                text "[buff_timer:.1f]s" xpos 0 ypos 10
+    
 
     for sampah in sampah_list:
         imagebutton:
@@ -271,50 +297,59 @@ screen game_screen:
             ypos sampah['y']
             idle sampah['image']  
             activate_sound "audio/sfx/clicksampah.mp3"
-            action Function(catch_sampah, sampah['x'], sampah['y'])
+            action Function(catch_sampah, sampah['x'], sampah['y'])  
         
-        if sampah['popup_score']:
+        if sampah['popup_score']:  
             text sampah['popup_score']['text']:
                 xpos sampah['x']
-                ypos sampah['y'] - 30
+                ypos sampah['y'] - 30 
                 size 30
-                color "#ffffff"
-    # Menambahkan gambar sampah
-    for sampah in sampah_list:
-        add sampah['image'] xpos sampah['x'] ypos sampah['y'] alpha sampah['opacity']
+                color "#ffffff" 
+
+        add sampah['image'] xpos sampah['x'] ypos sampah['y'] alpha sampah['opacity']  
     
-    # Menampilkan ikan
     for ikan in ikan_list:
         imagebutton:
             xpos ikan['x']
             ypos ikan['y']
             idle ikan['image']  
             activate_sound "audio/sfx/clickikan.mp3"
-            action Function(catch_ikan, ikan['x'], ikan['y'])
-    
+            action Function(catch_ikan, ikan['x'], ikan['y'])  
     if buff_item:
         imagebutton:
             xpos buff_item['x']
             ypos buff_item['y']
             idle buff_item['image']
-            action Function(catch_buff, buff_item['x'], buff_item['y'])
+            activate_sound "audio/sfx/clickbuff.mp3" 
+            action Function(catch_buff, buff_item['x'], buff_item['y']) 
+    
+    for paus in paus_list:
+        imagebutton:
+            idle paus['image']
+            xpos paus['x']
+            ypos paus['y']
+            focus_mask True
+    $ update_high_score(score)
+    $ spawn_sampah()  
+    $ spawn_ikan()  
+    $ update_items()  
 
-    # Timer update items
     timer 0.001 repeat True action [Function(update_items)]
-
 screen game_screen_misi_1:
 
-    add "bgKanan.png"  
-  
+    add "bgkanan.png"
     frame:
-        style "frame_4"             
-        xsize 490 ysize 283
-        xalign 0.5  
+        style "frame_3"             
+        xsize 620 ysize 620
+        ypos -200 xalign 0.99
+        #xalign 0.5  
         vbox:
-            xalign 0.5 yalign 0.5
-            text "[durasi]" size 70 xalign 0.5
+            xalign 0.4 yalign 0.55
+            text "{b}[durasi]{/b}" size 120 xalign 0.4
             #text "Score: [score_1:.0f] / 6000" style "timer_text"
-            text "Sampah: [sampah_terkumpul]/50"
+            
+        add "gui/questnotif.png" zoom 0.15 ypos 340 xpos 20
+        text "{b}Sampah: [sampah_terkumpul]/50{/b}" ypos 380 xpos 100
         timer 1.0 repeat True action If(
             durasi > 0,
             [SetVariable('durasi', durasi - 1), If(sampah_terkumpul >= 50, [Hide('game_screen_misi_1'), Jump('misi_1_berhasil')])],
@@ -360,16 +395,16 @@ screen game_screen_misi_1:
 
 screen game_screen_misi_2:
 
-    add "bgKanan.png"
-
+    add "bgkanan.png"
     frame:
-        style "frame_4"             
-        xsize 490 ysize 283
-        xalign 0.5  
+        style "frame_3"             
+        xsize 620 ysize 620
+        ypos -200 xalign 0.99
+        #xalign 0.5  
         vbox:
-            xalign 0.5 yalign 0.5
-            text "[durasi]" size 70 xalign 0.5
-            text "Score: [score_1:.0f] / 5000" style "timer_text"
+            xalign 0.4 yalign 0.55
+            text "{b}[durasi]{/b}" size 120 xalign 0.4
+            #text "Score: [score_1:.0f] / 6000" style "timer_text"
 
         timer 1.0 repeat True action If(
             durasi > 0,
@@ -379,12 +414,13 @@ screen game_screen_misi_2:
 
     if buff_active:
         frame:
-            xsize 600 ysize 150
-            yalign 0.1 xpos 1200
+            style "frame_2"
+            xsize 300 ysize 150 ypos 160
             vbox:
                 xalign 0.1 yalign 0.5
-                text "BUFF ACTIVE!" color "#FFD700"
-                text "Time Left: [buff_timer:.1f]s" xpos 0 ypos 10
+                text "Power Up!" color "#ff0000"
+                text "[buff_timer:.1f]s" xpos 0 ypos 10
+    
     
     for sampah in sampah_list:
         imagebutton:
@@ -435,16 +471,16 @@ screen game_screen_misi_2:
 
 screen game_screen_misi_3:
 
-    add "bgKanan.png"
-
+    add "bgkanan.png"
     frame:
-        style "frame_4"             
-        xsize 490 ysize 283
-        xalign 0.5  
+        style "frame_3"             
+        xsize 620 ysize 620
+        ypos -200 xalign 0.99
+        #xalign 0.5  
         vbox:
-            xalign 0.5 yalign 0.5
-            text "[durasi]" size 70 xalign 0.5
-            text "Score: [score_1:.0f] / 8000" style "timer_text"
+            xalign 0.4 yalign 0.55
+            text "{b}[durasi]{/b}" size 120 xalign 0.4
+            #text "Score: [score_1:.0f] / 6000" style "timer_text"
 
         timer 1.0 repeat True action If(
             durasi > 0,
@@ -454,12 +490,13 @@ screen game_screen_misi_3:
 
     if buff_active:
         frame:
-            xsize 600 ysize 150
-            yalign 0.1 xpos 1200
+            style "frame_2"
+            xsize 300 ysize 150 ypos 160
             vbox:
                 xalign 0.1 yalign 0.5
-                text "BUFF ACTIVE!" color "#FFD700"
-                text "Time Left: [buff_timer:.1f]s" xpos 0 ypos 10
+                text "Power Up!" color "#ff0000"
+                text "[buff_timer:.1f]s" xpos 0 ypos 10
+    
     
 
     for sampah in sampah_list:
@@ -615,4 +652,60 @@ screen test:
         vbox:
             text "{b}Score:{/b} [score:.1f]" #xpos 10 ypos 10
             text "{b}Sampah:{/b} [score_kg:.1f]kg" xpos 0 ypos 5
+screen timeout:
+    frame:
+        background "images/timeout.png"
+        vbox:
+            spacing 10
+            yalign 0.45 xalign 0.5
+            vbox:
+                yalign 0.45 xalign 0.5
+                spacing 2
+                text "{b}Score:" xalign 0.5
+                text "{b}[score]{/b}"  xalign 0.5
+            vbox:
+                yalign 0.45 xalign 0.5
+                spacing 2
+                text "{b}High Score:" xalign 0.5
+                text "{b}[persistent.high_score]{/b}" xalign 0.5 #xpos 10
 
+        button:
+            ypos 650 xpos 1013
+            xsize 100 ysize 100
+            background "gui/button/lanjutkan.png"
+            hover_background "gui/button/lanjutkanhover.png"
+            action Return()
+            activate_sound "audio/sfx/click.mp3"
+
+        button:
+            ypos 650 xpos 788
+            xsize 100 ysize 100
+            background "gui/button/cobalagi.png"
+            hover_background "gui/button/cobalagihover.png"
+            action Jump("modebebas")
+            activate_sound "audio/sfx/click.mp3"
+screen menuminigame:
+    add "gui/overlay/game_menu.png"
+    button:
+        ypos 442
+        xsize 603 ysize 135
+        background "gui/button/modeceritaidle.png"
+        hover_background "gui/button/ceritahover.png"
+        action Return()
+        activate_sound "audio/sfx/click.mp3"
+
+    button:
+        ypos 546
+        xsize 603 ysize 135
+        background "gui/button/bebasidle.png"
+        hover_background "gui/button/bebashover.png"
+        action Jump("modebebas")
+        activate_sound "audio/sfx/click.mp3" 
+
+    button:
+        ypos 651
+        xsize 603 ysize 135
+        background "gui/button/kuisidle.png"
+        hover_background "gui/button/kuishover.png"
+        action Jump("modebebas")
+        activate_sound "audio/sfx/click.mp3"           

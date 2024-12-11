@@ -2,9 +2,9 @@
 errors listed below, and try again.
 
 
-File "game/minigame.rpy", line 528: 'Jump' is not a keyword argument or valid child of the button statement.
-    action action Jump("misi_1")
-                      ^
+File "game/minigame.rpy", line 278: 'durasi' is not a keyword argument or valid child of the screen statement.
+    durasi += 10
+          ^
 
 Ren'Py Version: Ren'Py 8.3.3.24111502
-Wed Dec 11 01:14:41 2024
+Wed Dec 11 23:51:52 2024

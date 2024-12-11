@@ -9,6 +9,8 @@ define pembawa_berita = Character("Pembawa Berita", color = "#000000")
 define narrator = Character(None, what_style="narrator_style")
 define game = Character(None, what_style="game_style")
 
+
+
 style narrator_style is default:
     font "gui/font/monotype-corsiva.ttf"
     size 45
@@ -51,6 +53,7 @@ label splashscreen:
     return
 
 label start:
+    call screen menuminigame
     #jump misi_3
     #call screen win_condition_1
     play music dialogscene
@@ -266,6 +269,18 @@ label misi_3_gagal:
     
     #jump misi_3
 
+label modebebas:
+    $ score_1 = 0
+    $ score = 0
+    $ sampah_speed = 4
+    $ durasi = 90
+    call screen game_screen
+
+label kuis:
+    
+label timeout:
+    call screen timeout
+    return
 # Game selesai
 label Selesai:
     hide screen win_condition
