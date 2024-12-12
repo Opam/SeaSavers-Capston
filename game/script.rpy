@@ -277,10 +277,13 @@ label modebebas:
     call screen game_screen
 
 label kuis:
+    $ current_question_index = 0
+    $ score_kuis = 0
     
-label timeout:
-    call screen timeout
-    return
+    call screen kuis
+    #return
+
+
 # Game selesai
 label Selesai:
     hide screen win_condition
@@ -300,3 +303,11 @@ label Selesai:
     stop music
 
     return
+
+label timeout:
+    call screen timeout
+    #return
+
+label kuis_end:
+    call screen nilai_kuis
+    #return

@@ -674,7 +674,7 @@ screen timeout:
             xsize 100 ysize 100
             background "gui/button/lanjutkan.png"
             hover_background "gui/button/lanjutkanhover.png"
-            action Return()
+            action MainMenu()
             activate_sound "audio/sfx/click.mp3"
 
         button:
@@ -707,5 +707,6 @@ screen menuminigame:
         xsize 603 ysize 135
         background "gui/button/kuisidle.png"
         hover_background "gui/button/kuishover.png"
-        action Jump("modebebas")
-        activate_sound "audio/sfx/click.mp3"           
+        action Jump("kuis")
+        activate_sound "audio/sfx/click.mp3"   
+

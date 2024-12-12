@@ -84,6 +84,12 @@ style frame_3:
 style frame_4:
     background Frame("images/timerscore.png", gui.frame_borders, tile=gui.frame_tile)
 
+style frame_5:
+    background Frame("gui/frame3.png", gui.frame_borders, tile=gui.frame_tile)
+
+style frame_6:
+    background Frame("gui/frame4.png", gui.frame_borders, tile=gui.frame_tile)
+
 ################################################################################
 ## Layar In-game
 ################################################################################
