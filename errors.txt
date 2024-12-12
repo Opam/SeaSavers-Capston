@@ -2,9 +2,9 @@
 errors listed below, and try again.
 
 
-File "game/kuis.rpy", line 26: expected an indented block
-    def next_question():
-    ^
+File "game/minigame.rpy", line 695: 'show' is not a keyword argument or valid child of the button statement.
+    show black with fade
+        ^
 
 Ren'Py Version: Ren'Py 8.3.3.24111502
-Thu Dec 12 12:15:37 2024
+Thu Dec 12 21:49:58 2024

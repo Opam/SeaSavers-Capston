@@ -50,15 +50,16 @@ style text_center:
 
 label splashscreen:
     $ renpy.movie_cutscene("movies/splashscreen.mpg")
+
     return
 
 label start:
     call screen menuminigame
     #jump misi_3
     #call screen win_condition_1
-    play music dialogscene
-    scene scene 1 with dissolve
-    pause 1.0
+    play music dialogscene    
+    scene scene 1 with fade
+    pause 2.5
     "Di suatu pagi yang indah di kota kecil di pinggiran pantai yang bernama kota Pantara Indah"
     "Kota ini terkenal dengan pasar ikan yang sangat segar karena para nelayan di pasar mengambil ikan langsung dari lautan sana "
     "tapi akhir akhir ini banyak ikan yang kurang segar di karenakan banyak limbah sampah yang tersebar di lautan bahkan terdapat ikan yang cacat dikarenakan limbah sampah plastik yang di buang ke lautan."
@@ -277,22 +278,29 @@ label modebebas:
     call screen game_screen
 
 label kuis:
+    stop music
+    scene black with fade
+    pause 1.5
+    play music quiz
     $ current_question_index = 0
     $ score_kuis = 0
     
     call screen kuis
+    stop music
     #return
 
 
 # Game selesai
 label Selesai:
+    play music dialogscene
     hide screen win_condition
     hide screen game_screen      
     scene scene 5:
         zoom 0.7
     "Sagara akhirnya selesai membersihkan sampah yang mengapung dilautan dan dia mulai mengemasi sampah ke dalam tas sampah"
     sagara "Hufff akhirnya selesai juga ternyata banyak juga, untung aku membawa banyak tas sampah hari ini semoga sesampainya di pantai orang tidak mengira aku habis mencuri uang di bank."
-    
+    stop music
+
     play music ending   
     scene black with fade
     $ renpy.pause(2.0, hard=True)
