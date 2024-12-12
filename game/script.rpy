@@ -55,8 +55,9 @@ label splashscreen:
 
 label start:
     call screen menuminigame
-    #jump misi_3
-    #call screen win_condition_1
+    stop music
+    scene black with fade
+    pause 2.5
     play music dialogscene    
     scene scene 1 with fade
     pause 2.5
@@ -271,11 +272,17 @@ label misi_3_gagal:
     #jump misi_3
 
 label modebebas:
+    stop music
+    scene black with fade
+    pause 1.5
+    play music gameplay
     $ score_1 = 0
     $ score = 0
     $ sampah_speed = 4
     $ durasi = 90
+
     call screen game_screen
+    stop music
 
 label kuis:
     stop music
