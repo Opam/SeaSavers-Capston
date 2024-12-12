@@ -1,50 +1,60 @@
-2024-12-11 18:19:22 UTC
+2024-12-12 02:12:32 UTC
 Windows-10-10.0.26100
 Ren'Py 8.3.3.24111502
 
-Early init took 0.12s
-Loading error handling took 0.05s
-Loading script took 0.47s
-Loading save slot metadata took 0.07s
+Early init took 0.37s
+Loading error handling took 0.14s
+Loading script took 1.73s
+Loading save slot metadata took 0.29s
 Loading persistent took 0.00s
-Running init code took 0.11s
-Loading analysis data took 0.02s
-Analyze and compile ATL took 0.00s
-Reloading save slot metadata took 0.05s
+Running init code took 0.33s
+Loading analysis data took 0.06s
+Analyze and compile ATL took 0.01s
+Reloading save slot metadata took 0.07s
 Index archives took 0.00s
-Backing up script files to 'C:\\Users\\LENOVO\\AppData\\Roaming/RenPy/backups\\SeaSavers-Capston':
-Dump and make backups took 0.07s
+Backing up script files to 'C:\\Users\\D E L L\\AppData\\Roaming/RenPy/backups\\SeaSavers-Capston':
+Dump and make backups took 0.16s
 Cleaning cache took 0.00s
 Making clean stores took 0.00s
-Initial gc took 0.06s
-DPI scale factor: 1.250000
+Initial gc took 0.09s
+DPI scale factor: 1.000000
 nvdrs: Loaded, about to disable thread optimizations.
-nvdrs: Disabled thread optimizations.
-Creating interface object took 0.43s
+nvdrs: b"Couldn't load nvlib." (can be ignored)
+Creating interface object took 0.00s
 Cleaning stores took 0.00s
-Init translation took 0.05s
-Build styles took 0.00s
-Load screen analysis took 0.00s
-Analyze screens took 0.02s
-Save screen analysis took 0.03s
-Prepare screens took 0.11s
+Init translation took 0.07s
+Build styles took 0.01s
+Load screen analysis took 0.02s
+Analyze screens took 0.04s
+Save screen analysis took 0.06s
+Prepare screens took 0.18s
 Save pyanalysis. took 0.03s
-Save bytecode. took 0.04s
+Save bytecode. took 0.05s
 Running _start took 0.00s
-Interface start took 0.45s
+Interface start took 1.00s
 
 Initializing gl2 renderer:
-primary display bounds: (0, 0, 1920, 1080)
+primary display bounds: (0, 0, 1366, 768)
 swap interval: 1 frames
 Windowed mode.
-Vendor: "b'NVIDIA Corporation'"
-Renderer: b'NVIDIA GeForce MX350/PCIe/SSE2'
-Version: b'4.6.0 NVIDIA 561.09'
+Vendor: "b'Intel'"
+Renderer: b'Intel(R) UHD Graphics 620'
+Version: b'4.6.0 - Build 31.0.101.2127'
 Display Info: None
-Screen sizes: virtual=(1920, 1080) physical=(1920, 991) drawable=(1920, 991)
+Screen sizes: virtual=(1920, 1080) physical=(798, 449) drawable=(798, 449)
 Maximum texture size: 4096x4096
 INFO:renpy_warp_service:service thread started. periodically scanning ports for warp server
-Screen sizes: virtual=(1920, 1080) physical=(1920, 991) drawable=(1920, 991)
-Maximum texture size: 4096x4096
-Screen sizes: virtual=(1920, 1080) physical=(1038, 584) drawable=(1038, 584)
-Maximum texture size: 4096x4096
+Cleaning stores took 0.00s
+Init translation took 0.00s
+Build styles took 0.01s
+Load screen analysis took 0.13s
+Analyze screens took 0.00s
+Prepare screens took 0.00s
+Running _start took 0.00s
+Cleaning stores took 0.00s
+Init translation took 0.00s
+Build styles took 0.01s
+Load screen analysis took 0.11s
+Analyze screens took 0.00s
+Prepare screens took 0.00s
+Running _start took 0.00s
